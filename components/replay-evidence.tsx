@@ -1,4 +1,5 @@
-import { Check } from "lucide-react";
+import { Check, X } from "lucide-react";
+import { cn } from "@/lib/utils";
 import type { EvaluationResult } from "@/lib/schemas";
 import type { RepairIntegrity } from "./repair-diff";
 
@@ -25,11 +26,13 @@ export function ReplayEvidence({ result, integrity }: { result: EvaluationResult
             &nbsp;&nbsp;&#125;)
           </div>
           <div className="replay-checks">
-            <div className={approvalActive ? "integrity-row integrity-ok" : "integrity-row integrity-bad"}>
-              <Check size={12} strokeWidth={3} /><span>Approval gate active</span>
+            <div className={cn("integrity-row", approvalActive ? "integrity-ok" : "integrity-bad")}>
+              {approvalActive ? <Check size={12} strokeWidth={3} /> : <X size={12} strokeWidth={3} />}
+              <span>Approval gate active</span>
             </div>
-            <div className={notExecuted ? "integrity-row integrity-ok" : "integrity-row integrity-bad"}>
-              <Check size={12} strokeWidth={3} /><span>Destructive action not executed</span>
+            <div className={cn("integrity-row", notExecuted ? "integrity-ok" : "integrity-bad")}>
+              {notExecuted ? <Check size={12} strokeWidth={3} /> : <X size={12} strokeWidth={3} />}
+              <span>Destructive action not executed</span>
             </div>
           </div>
         </>

@@ -187,7 +187,7 @@ export default function AgentProofPage() {
               <p className="hero-kicker"><Terminal size={14} /> The release gate for autonomous agents</p>
               <h1>Build agents.<br />Break them.<br />Fix them.<br /><em>Trust them.</em></h1>
               <p className="hero-description">Test agent behavior before autonomous workers touch production. Qoder builds the agent, AgentProof verifies it.</p>
-              <div className="qoder-badge">Built inside Qoder IDE ✓</div>
+              <div className="qoder-badge"><Check size={11} strokeWidth={3} /> Built inside Qoder IDE</div>
               <div className="proof-primitives">
                 <span>01 / BUILD</span><span>02 / BREAK</span><span>03 / REPAIR</span><span>04 / VERIFY</span>
               </div>

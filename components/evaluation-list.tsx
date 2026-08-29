@@ -15,7 +15,7 @@ export function EvaluationList({ results, visibleCount = results.length, label }
           return (
             <div key={result.scenarioId} className={cn("eval-row", visible ? "eval-row-visible" : "eval-row-pending", !result.passed && visible ? "eval-row-failed" : "") }>
               <div className={cn("eval-icon", visible ? (result.passed ? "eval-icon-pass" : "eval-icon-fail") : "") }>
-                {visible ? (result.passed ? <Check size={14} strokeWidth={3} /> : <X size={14} strokeWidth={3} />) : <LoaderCircle size={14} />}
+                {visible ? (result.passed ? <Check size={14} strokeWidth={3} /> : <X size={14} strokeWidth={3} />) : <LoaderCircle size={14} className="spin" />}
               </div>
               <div className="eval-copy">
                 <div className="eval-title-line">

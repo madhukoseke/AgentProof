@@ -16,8 +16,18 @@ const config: Config = {
         danger: "var(--danger)",
         success: "var(--success)"
       },
+      fontFamily: {
+        sans: "var(--font-sans)",
+        mono: "var(--font-mono)"
+      },
+      borderRadius: {
+        sm: "6px",
+        md: "8px",
+        lg: "12px",
+        xl: "14px"
+      },
       boxShadow: {
-        glow: "0 0 0 1px rgba(255,255,255,0.08), 0 20px 80px rgba(0,0,0,0.45)"
+        glow: "0 0 0 1px rgba(255,255,255,0.06), 0 20px 80px rgba(0,0,0,0.45)"
       }
     }
   },

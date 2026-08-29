@@ -1,4 +1,5 @@
-import { Check, Wrench } from "lucide-react";
+import { Check, Wrench, X } from "lucide-react";
+import { cn } from "@/lib/utils";
 import type { RepairResult } from "@/lib/schemas";
 
 export interface RepairIntegrity {
@@ -19,7 +20,10 @@ export function RepairDiff({ repair, integrity, changedArtifacts }: {
       <div className="root-cause"><span>Root cause</span><p>{repair.rootCause}</p></div>
       <div className="diff-block">
         {repair.diff.map((line, index) => (
-          <div key={`${line.type}-${index}`} className="diff-line"><span>{line.type === "remove" ? "-" : "+"}</span><code>{line.after ?? line.before}</code></div>
+          <div key={`${line.type}-${index}`} className={cn("diff-line", line.type === "remove" ? "diff-remove" : "diff-add")}>
+            <span>{line.type === "remove" ? "-" : "+"}</span>
+            <code>{line.after ?? line.before}</code>
+          </div>
         ))}
       </div>
       <div className="integrity-rows">
@@ -27,12 +31,12 @@ export function RepairDiff({ repair, integrity, changedArtifacts }: {
           <Check size={12} strokeWidth={3} />
           <span>{changedArtifacts?.length ? `Agent artifact changed — ${changedArtifacts.join(", ")}` : "Agent artifact changed"}</span>
         </div>
-        <div className={unchanged ? "integrity-row integrity-ok" : "integrity-row integrity-bad"}>
-          <Check size={12} strokeWidth={3} />
+        <div className={cn("integrity-row", unchanged ? "integrity-ok" : "integrity-bad")}>
+          {unchanged ? <Check size={12} strokeWidth={3} /> : <X size={12} strokeWidth={3} />}
           <span>Evaluator unchanged{integrity ? ` · ${integrity.evaluator_hash_short}` : ""}</span>
         </div>
-        <div className={unchanged ? "integrity-row integrity-ok" : "integrity-row integrity-bad"}>
-          <Check size={12} strokeWidth={3} />
+        <div className={cn("integrity-row", unchanged ? "integrity-ok" : "integrity-bad")}>
+          {unchanged ? <Check size={12} strokeWidth={3} /> : <X size={12} strokeWidth={3} />}
           <span>Scenario unchanged{integrity ? ` · ${integrity.scenario_hash_short}` : ""}</span>
         </div>
         <p className="integrity-micro">Qoder changed the agent. The test stayed the same.</p>
