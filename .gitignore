@@ -1,0 +1,9 @@
+.next/
+node_modules/
+data/runs/*.json
+.env
+.env.local
+npm-debug.log*
+.DS_Store
+*.tsbuildinfo
+
